@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { BooksModule } from './books/books.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { join } from 'path';
+import { BooksModule } from './books/books.module';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { join } from 'path';
       playground: true,
     }),
     BooksModule,
+    AuthorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

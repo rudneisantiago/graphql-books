@@ -5,25 +5,48 @@
 type Book {
   id: ID!
   name: String!
+  price: Float!
+}
+
+type Author {
+  id: ID!
+  name: String!
 }
 
 type Query {
   books: [Book!]!
   book(id: ID!): Book!
+  authors: [Author!]!
+  author(id: ID!): Author!
 }
 
 type Mutation {
   createBook(createBookInput: CreateBookInput!): Book!
   updateBook(updateBookInput: UpdateBookInput!): Book!
   removeBook(id: ID!): [Book!]!
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
+  removeAuthor(id: ID!): Author!
 }
 
 input CreateBookInput {
   id: ID!
   name: String!
+  price: Float!
 }
 
 input UpdateBookInput {
+  id: ID!
+  name: String!
+  price: Float
+}
+
+input CreateAuthorInput {
+  id: ID!
+  name: String!
+}
+
+input UpdateAuthorInput {
   id: ID!
   name: String!
 }
