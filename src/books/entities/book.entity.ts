@@ -1,4 +1,5 @@
 import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
+import { Author } from '../../author/entities/author.entity';
 
 @ObjectType()
 export class Book {
@@ -10,4 +11,7 @@ export class Book {
 
   @Field(() => Float)
   price: number;
+
+  @Field(() => [Author])
+  authors: Author[];
 }

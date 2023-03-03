@@ -1,4 +1,5 @@
 import { InputType, ID, Field, Float } from '@nestjs/graphql';
+import { CreateAuthorInput } from '../../author/dto/create-author.input';
 
 @InputType()
 export class CreateBookInput {
@@ -10,4 +11,7 @@ export class CreateBookInput {
 
   @Field(() => Float)
   price: number;
+
+  @Field(() => [CreateAuthorInput])
+  authors: CreateAuthorInput[];
 }

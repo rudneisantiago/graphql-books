@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { join } from 'path';
 import { BooksModule } from './books/books.module';
 import { AuthorModule } from './author/author.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -13,6 +15,18 @@ import { AuthorModule } from './author/author.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: true,
+    }),
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT),
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: 'postgres',
+      schema: 'graphql-books',
+      entities: ['dist/**/*.entity.js'],
+      synchronize: false,
     }),
     BooksModule,
     AuthorModule,
