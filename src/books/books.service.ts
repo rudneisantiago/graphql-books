@@ -29,7 +29,10 @@ export class BooksService {
   }
 
   async findOne(id: string) {
-    const book = await this.bookRepository.findOneBy({ id: id });
+    const book = await this.bookRepository.findOne({
+      where: { id: id },
+      relations: ['authors'],
+    });
     return book;
   }
 
