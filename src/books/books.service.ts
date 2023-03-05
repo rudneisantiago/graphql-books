@@ -20,7 +20,11 @@ export class BooksService {
   }
 
   async findAll() {
-    const books = await this.bookRepository.find();
+    const books = await this.bookRepository.find({
+      relations: {
+        authors: true,
+      },
+    });
     return books;
   }
 

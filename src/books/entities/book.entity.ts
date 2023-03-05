@@ -1,5 +1,6 @@
 import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Author } from '../../author/entities/author.entity';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
 
 @Entity('books')
 @ObjectType()
@@ -16,6 +17,18 @@ export class Book {
   @Field(() => Float)
   price: number;
 
-//   @Field(() => [Author])
-//   authors: Author[];
+  @ManyToMany(() => Author)
+  @JoinTable({
+    name: 'book_author',
+    joinColumn: {
+      name: 'book_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'author_id',
+      referencedColumnName: 'id',
+    },
+  })
+  @Field(() => [Author])
+  authors: Author[];
 }

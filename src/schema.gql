@@ -2,15 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Author {
+  id: ID!
+  name: String!
+}
+
 type Book {
   id: ID!
   name: String!
   price: Float!
-}
-
-type Author {
-  id: ID!
-  name: String!
+  authors: [Author!]!
 }
 
 type Query {
