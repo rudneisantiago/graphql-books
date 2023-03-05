@@ -14,6 +14,7 @@ export class AuthorService {
 
   async create(createAuthorInput: CreateAuthorInput) {
     const author = this.authorRepository.create(createAuthorInput);
+    this.authorRepository.save(author);
     return author;
   }
 
