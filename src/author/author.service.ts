@@ -13,8 +13,8 @@ export class AuthorService {
   ) {}
 
   async create(createAuthorInput: CreateAuthorInput) {
-    await this.authorRepository.insert(createAuthorInput);
-    return createAuthorInput;
+    const author = this.authorRepository.create(createAuthorInput);
+    return author;
   }
 
   async findAll() {

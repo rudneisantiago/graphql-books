@@ -12,6 +12,6 @@ export class CreateBookInput {
   @Field(() => Float)
   price: number;
 
-  @Field(() => [CreateAuthorInput])
-  authors: CreateAuthorInput[];
+  // @Field(() => [CreateAuthorInput])
+  // authors: CreateAuthorInput[];
 }

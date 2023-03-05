@@ -1,8 +1,7 @@
 import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
 import { Column, Entity, PrimaryColumn } from 'typeorm';
-import { Author } from '../../author/entities/author.entity';
 
-@Entity()
+@Entity('books')
 @ObjectType()
 export class Book {
   @PrimaryColumn('uuid')
@@ -17,6 +16,6 @@ export class Book {
   @Field(() => Float)
   price: number;
 
-  @Field(() => [Author])
-  authors: Author[];
+//   @Field(() => [Author])
+//   authors: Author[];
 }

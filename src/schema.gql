@@ -2,16 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Author {
-  id: ID!
-  name: String!
-}
-
 type Book {
   id: ID!
   name: String!
   price: Float!
-  authors: [Author!]!
+}
+
+type Author {
+  id: ID!
+  name: String!
 }
 
 type Query {
@@ -34,19 +33,17 @@ input CreateBookInput {
   id: ID!
   name: String!
   price: Float!
-  authors: [CreateAuthorInput!]!
-}
-
-input CreateAuthorInput {
-  id: ID!
-  name: String!
 }
 
 input UpdateBookInput {
   id: ID!
   name: String!
-  price: Float
-  authors: [CreateAuthorInput!]
+  price: Float!
+}
+
+input CreateAuthorInput {
+  id: ID!
+  name: String!
 }
 
 input UpdateAuthorInput {
