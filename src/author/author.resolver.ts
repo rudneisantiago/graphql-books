@@ -29,10 +29,10 @@ export class AuthorResolver {
   updateAuthor(
     @Args('updateAuthorInput') updateAuthorInput: UpdateAuthorInput,
   ) {
-    return this.authorService.update(updateAuthorInput.id, updateAuthorInput);
+    return this.authorService.update(updateAuthorInput);
   }
 
-  @Mutation(() => Author)
+  @Mutation(() => [Author])
   removeAuthor(@Args('id', { type: () => ID }) id: string) {
     return this.authorService.remove(id);
   }
