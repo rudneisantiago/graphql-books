@@ -31,20 +31,21 @@ type Mutation {
 }
 
 input CreateBookInput {
-  id: ID!
   name: String!
   price: Float!
-}
-
-input UpdateBookInput {
-  id: ID!
-  name: String!
-  price: Float!
+  authors: [CreateAuthorInput!]!
 }
 
 input CreateAuthorInput {
   id: ID!
   name: String!
+}
+
+input UpdateBookInput {
+  name: String
+  price: Float
+  authors: [CreateAuthorInput!]
+  id: ID!
 }
 
 input UpdateAuthorInput {
